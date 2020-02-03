@@ -56,13 +56,10 @@ class SnakeGame:
             self.snake.append((last_x + dir_x, last_y + dir_y))
 
     def game_ended(self):
+        # Check for the collision of the snake with itself
         if any([count > 1 for count in [self.snake.count(x) for x in self.snake]]):
             return True
-        x_s, y_s = zip(*self.snake)
 
         # Collision with the limits of the screen -- conditions
-        c1 = any([x > self.cols for x in x_s])
-        c2 = any([x < 0 for x in x_s])
-        c3 = any([y > self.rows for y in y_s])
-        c4 = any([y < 0 for y in y_s])
-        return c1 or c2 or c3 or c4
+        head_x, head_y = self.snake[0]
+        return head_x < 0 or head_x > self.cols or head_y < 0 or head_y > self.rows
