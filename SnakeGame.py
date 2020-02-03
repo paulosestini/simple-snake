@@ -60,6 +60,6 @@ class SnakeGame:
         if any([count > 1 for count in [self.snake.count(x) for x in self.snake]]):
             return True
 
-        # Collision with the limits of the screen -- conditions
+        # Collision with the limits of the screen
         head_x, head_y = self.snake[0]
         return head_x < 0 or head_x > self.cols or head_y < 0 or head_y > self.rows
